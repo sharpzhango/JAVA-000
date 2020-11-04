@@ -9,6 +9,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.util.ReferenceCountUtil;
+import io.sharpzhango.gateway.outbound.netty4.NettyClientOutboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +26,9 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
         this.filter = new HttpMethodRequestFilter();
 
         // http 方式调用
-        this.handler = new HttpclientOutboundHandler(proxyServer);
+//        this.handler = new HttpclientOutboundHandler(proxyServer);
+        // netty 方式调用
+        this.handler = new NettyClientOutboundHandler(proxyServer);
     }
     
     @Override
