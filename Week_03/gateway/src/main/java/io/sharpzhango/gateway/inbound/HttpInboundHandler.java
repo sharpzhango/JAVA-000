@@ -1,5 +1,7 @@
 package io.sharpzhango.gateway.inbound;
 
+import io.sharpzhango.gateway.filter.HttpMethodRequestFilter;
+import io.sharpzhango.gateway.filter.HttpRequestFilter;
 import io.sharpzhango.gateway.outbound.OutboundHandler;
 import io.sharpzhango.gateway.outbound.http.HttpclientOutboundHandler;
 import io.sharpzhango.gateway.outbound.httpclient4.HttpOutboundHandler;
@@ -15,10 +17,12 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
     private static Logger logger = LoggerFactory.getLogger(HttpInboundHandler.class);
     private final String proxyServer;
     private OutboundHandler handler;
+    private HttpRequestFilter filter;
     
     public HttpInboundHandler(String proxyServer) {
         this.proxyServer = proxyServer;
 //        handler = new HttpOutboundHandler(this.proxyServer);
+        this.filter = new HttpMethodRequestFilter();
 
         // http 方式调用
         this.handler = new HttpclientOutboundHandler(proxyServer);
@@ -39,7 +43,8 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
 //            if (uri.contains("/test")) {
 //                handlerTest(fullRequest, ctx);
 //            }
-    
+            filter.filter(fullRequest, ctx);
+
             handler.handle(fullRequest, ctx);
     
         } catch(Exception e) {
