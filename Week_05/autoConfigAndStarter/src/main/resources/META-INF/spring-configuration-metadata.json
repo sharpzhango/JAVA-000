@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "student",
+      "type": "com.example.demo.main.Student",
+      "sourceType": "com.example.demo.main.Student"
+    }
+  ],
+  "properties": [
+    {
+      "name": "student.id",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.demo.main.Student"
+    },
+    {
+      "name": "student.name",
+      "type": "java.lang.String",
+      "sourceType": "com.example.demo.main.Student"
+    }
+  ],
+  "hints": []
+}
