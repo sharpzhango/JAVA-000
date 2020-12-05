@@ -20,12 +20,12 @@ public class InsertDemo {
         try {
             long start = System.currentTimeMillis();
             con = ds.getConnection();
-            String sql = "insert into  sys_user (id,password,username) values (?,?,?)";
+//            String sql = "insert into  tb_user (id,password,username) values (?,?,?)";
+            String sql = "insert into tb_user (id,create_time,name,age,phone,address,status,nickname,certificate_no) values(?,now(),?,21,12392323,'ddd',0,'ad','2323')";
             pst = con.prepareStatement(sql);
             for (int i = 0; i < 1000; i++) {
-                pst.setInt(1,i+3);
+                pst.setInt(1,i+4);
                 pst.setString(2, faker.name().firstName());
-                pst.setString(3, faker.name().lastName());
                 pst.addBatch();
 
             }
