@@ -1,0 +1,19 @@
+#dataSources:
+#  ds_master:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3307/test?characterEncoding=utf-8
+#    username: root
+#    password: 123456
+#  ds_slave0:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3308/test?characterEncoding=utf-8
+#    username: root
+#    password: 123456
+#
+#masterSlaveRule:
+#  name: ds_ms
+#  masterDataSourceName: ds_master
+#  slaveDataSourceNames: [ds_slave0]
+#
+#props:
+#  sql.show: true
